@@ -1,24 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
-
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { useState } from "react";
+import { IndustrialCompanyWebsite } from "@/components/industrial/company-website";
+import { InquiryDrawer } from "@/components/industrial/inquiry-drawer";
+import { company, products, posts, reels } from "@/lib/demo-company";
+import type { Product } from "@/lib/industrial-types";
 export const Route = createFileRoute("/")({
+  head: () => ({ meta: [
+    { title: `${company.name} | Precision Industrial Components` },
+    { name: "description", content: company.description },
+    { property: "og:title", content: `${company.name} | Precision Industrial Components` },
+    { property: "og:description", content: company.description },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
   component: Index,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  return <><IndustrialCompanyWebsite company={company} products={products} posts={posts} reels={reels} onOpenInquiry={setSelectedProduct} /><InquiryDrawer key={selectedProduct?.id ?? 'closed'} product={selectedProduct} company={company} onClose={() => setSelectedProduct(null)} /></>;
 }
