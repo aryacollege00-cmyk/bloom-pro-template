@@ -11,6 +11,8 @@ export interface Company {
   year_established: number;
   certifications: Array<string | { name: string; description?: string }>;
   tagline?: string;
+  headline?: string;
+  catalog_heading?: string;
   delivery_area?: string;
 }
 export interface Product {

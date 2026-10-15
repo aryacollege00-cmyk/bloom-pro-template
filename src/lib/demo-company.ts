@@ -10,7 +10,7 @@ import type { Company, Product, Post, Reel } from './industrial-types';
 export const company: Company = {
   name: 'Apex Engineering', logo_url: logo, cover_url: cover,
   description: 'Precision-engineered components. Uncompromising quality. Your trusted manufacturing partner for industrial solutions, built to perform.',
-  tagline: 'ENGINEERED FOR EXCELLENCE', location: 'Plot 24, MIDC Industrial Area, Pune, Maharashtra 411026',
+  tagline: 'ENGINEERED FOR EXCELLENCE', headline: 'Industrial excellence.', catalog_heading: 'Precision. Performance. Possibilities.', location: 'Plot 24, MIDC Industrial Area, Pune, Maharashtra 411026',
   email: 'sales@apexengineering.example', mobile: '+91 00000 00000', whatsapp: '910000000000',
   gst: '27ABCDE1234F1Z5', year_established: 2005, delivery_area: 'Pan-India',
   certifications: [
